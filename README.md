@@ -11,13 +11,13 @@ Proyek ini merupakan tugas UAS yang bertujuan untuk membangun sebuah aplikasi CR
 
 🛠️ Fitur Utama
 
-✅ Tambah data (Mahasiswa)
+✅ Tambah data Mahasiswa
 
-📄 Lihat data
+📄 Lihat data Mahasiswa 
 
-✏️ Edit data
+✏️ Edit data Mahasiswa 
 
-❌ Hapus data
+❌ Hapus data Mahasiswa 
 
 🌐 Menyediakan akses data melalui tampilan web maupun dalam format JSON
 
