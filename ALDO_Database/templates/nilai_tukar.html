@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Nilai Tukar Mata Uang</h2>
+    
+    <div class="exchange-container">
+        <div class="exchange-form">
+            <select id="baseCurrency">
+                <option value="USD">US Dollar (USD)</option>
+                <option value="IDR">Rupiah (IDR)</option>
+                <option value="JPY">Yen Jepang (JPY)</option>
+                <option value="EUR">Euro (EUR)</option>
+            </select>
+            
+            <button onclick="getExchangeRates()" class="btn">Dapatkan Nilai Tukar</button>
+        </div>
+        
+        <div class="exchange-result" id="exchangeResult">
+            <h3>Nilai Tukar (1 <span id="baseCurrencyDisplay">USD</span>):</h3>
+            <ul>
+                <li>IDR: <span id="idrRate">-</span></li>
+                <li>JPY: <span id="jpyRate">-</span></li>
+                <li>EUR: <span id="eurRate">-</span></li>
+                <li>USD: <span id="usdRate">-</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getExchangeRates() {
+        const baseCurrency = document.getElementById('baseCurrency').value;
+        
+        fetch(`/api/nilai-tukar?mata_uang=${baseCurrency}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('baseCurrencyDisplay').textContent = baseCurrency;
+                document.getElementById('idrRate').textContent = data.rates.IDR.toFixed(2);
+                document.getElementById('jpyRate').textContent = data.rates.JPY.toFixed(2);
+                document.getElementById('eurRate').textContent = data.rates.EUR.toFixed(2);
+                document.getElementById('usdRate').textContent = data.rates.USD.toFixed(2);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+    
+    // Dapatkan nilai tukar default saat halaman dimuat
+    window.onload = getExchangeRates;
+</script>
+{% endblock %}

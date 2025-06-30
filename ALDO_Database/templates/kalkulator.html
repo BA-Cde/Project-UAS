@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Konversi Suhu</h2>
+    
+    <div class="converter-container">
+        <div class="converter-form">
+            <input type="number" id="temperatureInput" placeholder="Masukkan suhu" step="0.01">
+            
+            <select id="fromUnit">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+            </select>
+            
+            <span>ke</span>
+            
+            <select id="toUnit">
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="celsius">Celsius (°C)</option>
+                <option value="kelvin">Kelvin (K)</option>
+            </select>
+            
+            <button onclick="convertTemperature()" class="btn">Konversi</button>
+        </div>
+        
+        <div class="converter-result" id="converterResult">
+            <h3>Hasil Konversi:</h3>
+            <p id="convertedTemp">-</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function convertTemperature() {
+        const temperature = parseFloat(document.getElementById('temperatureInput').value);
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+        
+        if (isNaN(temperature)) {
+            alert('Masukkan suhu yang valid');
+            return;
+        }
+        
+        fetch('/api/konversi-suhu', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                suhu: temperature,
+                dari: fromUnit,
+                ke: toUnit
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const unitSymbols = {
+                'celsius': '°C',
+                'fahrenheit': '°F',
+                'kelvin': 'K'
+            };
+            
+            document.getElementById('convertedTemp').textContent = 
+                `${data.hasil} ${unitSymbols[toUnit]}`;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+{% endblock %}

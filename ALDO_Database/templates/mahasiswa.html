@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Data Mahasiswa</h2>
+    
+    <div class="mahasiswa-container">
+        <div class="form-container">
+            <h3>Tambah Mahasiswa</h3>
+            <form id="mahasiswaForm">
+                <input type="text" id="nama" placeholder="Nama" required>
+                <input type="text" id="nim" placeholder="NIM" required>
+                <input type="text" id="jurusan" placeholder="Jurusan" required>
+                <button type="submit" class="btn">Tambah</button>
+            </form>
+        </div>
+        
+        <div class="table-container">
+            <h3>Daftar Mahasiswa</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>NIM</th>
+                        <th>Jurusan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="mahasiswaTable">
+                    {% for m in mahasiswa %}
+                    <tr id="row-{{ m.id }}">
+                        <td>{{ m.id }}</td>
+                        <td>{{ m.nama }}</td>
+                        <td>{{ m.nim }}</td>
+                        <td>{{ m.jurusan }}</td>
+                        <td>
+                            <button onclick="deleteMahasiswa({{ m.id }})" class="btn-delete">Hapus</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('mahasiswaForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const mahasiswa = {
+            nama: document.getElementById('nama').value,
+            nim: document.getElementById('nim').value,
+            jurusan: document.getElementById('jurusan').value
+        };
+        
+        fetch('/api/mahasiswa', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(mahasiswa)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Tambahkan baris baru ke tabel
+            const table = document.getElementById('mahasiswaTable');
+            const newRow = document.createElement('tr');
+            newRow.id = `row-${data.id}`;
+            newRow.innerHTML = `
+                <td>${data.id}</td>
+                <td>${data.nama}</td>
+                <td>${data.nim}</td>
+                <td>${data.jurusan}</td>
+                <td>
+                    <button onclick="deleteMahasiswa(${data.id})" class="btn-delete">Hapus</button>
+                </td>
+            `;
+            table.appendChild(newRow);
+            
+            // Reset form
+            document.getElementById('mahasiswaForm').reset();
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
+    function deleteMahasiswa(id) {
+        fetch(`/api/mahasiswa/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById(`row-${id}`).remove();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+{% endblock %}

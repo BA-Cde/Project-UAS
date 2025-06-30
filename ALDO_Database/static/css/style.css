@@ -1,0 +1,428 @@
+/* Gaya dasar */
+:root {
+    --primary-color: #6f2b2b;
+    --secondary-color: #000000;
+    --accent-color: #ff9e9d;
+    --dark-color: #000000;
+    --light-color: #cce4f9;
+    --text-color: #000000;
+    --shadow: 0 4px 8px rgba(36, 34, 34, 0.1);
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--light-color);
+}
+
+.ghibli-background {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrKkSzGhr197YNDzlfW4xnET4lyiN6Pku7zg&s');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: rgba(25, 23, 23, 0.8);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-container h1 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--dark-color);
+    margin: 0;
+    font-size: 2rem;
+}
+
+.totoro-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/totoro-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Main content */
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(29, 24, 24, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+h2 {
+    color: var(--dark-color);
+    font-family: 'Fredoka One', cursive;
+    margin-top: 0;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Hero section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    background-color: rgba(54, 51, 51, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: var(--dark-color);
+}
+
+.hero-image {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+.cat-bus {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/cat-bus.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: rgb(91, 69, 69);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    text-align: center;
+    border: 2px solid var(--secondary-color);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: var(--dark-color);
+    margin-top: 0;
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--primary-color);
+    color: rgb(38, 243, 11);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-delete {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #ff5252;
+}
+
+/* Forms */
+input, select {
+    padding: 0.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-family: 'Comic Neue', cursive;
+    margin-right: 0.5rem;
+}
+
+/* Mahasiswa page */
+.mahasiswa-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.form-container, .table-container {
+    flex: 1;
+    background-color: rgb(79, 76, 76);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.form-container h3, .table-container h3 {
+    margin-top: 0;
+    color: var(--dark-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+}
+
+tr:nth-child(even) {
+    background-color: #564949;
+}
+
+/* Weather page */
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.weather-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.weather-form input {
+    flex: 1;
+}
+
+.weather-result {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 600px;
+}
+
+.weather-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-info h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--dark-color);
+}
+
+.weather-info p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+/* Converter page */
+.converter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.converter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+}
+
+.converter-form input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.converter-result {
+    background-color: rgb(85, 73, 73);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+#convertedTemp {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin: 1rem 0;
+}
+
+/* Exchange page */
+.exchange-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.exchange-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.exchange-result {
+    background-color: rgb(109, 93, 93);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+}
+
+.exchange-result ul {
+    list-style: none;
+    padding: 0;
+}
+
+.exchange-result li {
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #4e4848;
+}
+
+/* Footer */
+footer {
+    background-color: rgba(62, 56, 56, 0.8);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.soot-sprite {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background-image: url('../images/soot-sprite.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-image {
+        margin-top: 2rem;
+    }
+    
+    .mahasiswa-container {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-text">
+        <h2>Selamat Datang di ALDO_Database</h2>
+        <p>Web simpel dengan berbasis CRUD dan GUI simpel</p>
+    </div>
+    <div class="hero-image">
+        <div class="cat-bus"></div>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <h3>📊 Data Mahasiswa</h3>
+        <p>Kelola data mahasiswa dengan mudah</p>
+        <a href="{{ url_for('mahasiswa_ui') }}" class="btn">Lihat Data</a>
+    </div>
+    <div class="feature-card">
+        <h3>⛅ Cek Cuaca</h3>
+        <p>Informasi cuaca real-time</p>
+        <a href="{{ url_for('cuaca_ui') }}" class="btn">Cek Sekarang</a>
+    </div>
+    <div class="feature-card">
+        <h3>🌡️ Konversi Suhu</h3>
+        <p>Konversi antar satuan suhu</p>
+        <a href="{{ url_for('kalkulator_ui') }}" class="btn">Coba Sekarang</a>
+    </div>
+    <div class="feature-card">
+        <h3>💱 Nilai Tukar</h3>
+        <p>Informasi nilai tukar mata uang</p>
+        <a href="{{ url_for('nilai_tukar_ui') }}" class="btn">Lihat Kurs</a>
+    </div>
+</div>
+{% endblock %}

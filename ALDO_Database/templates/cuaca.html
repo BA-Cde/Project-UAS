@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Cek Cuaca</h2>
+    
+    <div class="weather-container">
+        <div class="weather-form">
+            <input type="text" id="cityInput" placeholder="Masukkan nama kota" value="Jakarta">
+            <button onclick="getWeather()" class="btn">Cek Cuaca</button>
+        </div>
+        
+        <div class="weather-result" id="weatherResult">
+            <div class="weather-icon">
+                <img id="weatherIcon" src="" alt="Weather Icon">
+            </div>
+            <div class="weather-info">
+                <h3 id="cityName">-</h3>
+                <p id="weatherTemp">- °C</p>
+                <p id="weatherDesc">-</p>
+                <p id="weatherHumidity">Kelembaban: -%</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getWeather() {
+        const city = document.getElementById('cityInput').value;
+        
+        fetch(`/api/cuaca?kota=${city}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+                
+                document.getElementById('cityName').textContent = data.kota;
+                document.getElementById('weatherTemp').textContent = `${data.suhu} °C`;
+                document.getElementById('weatherDesc').textContent = data.deskripsi;
+                document.getElementById('weatherHumidity').textContent = `Kelembaban: ${data.kelembaban}%`;
+                
+                const iconUrl = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
+                document.getElementById('weatherIcon').src = iconUrl;
+                
+                document.getElementById('weatherResult').style.display = 'flex';
+            })
+            .catch(error => console.error('Error:', error));
+    }
+    
+    // Cek cuaca default saat halaman dimuat
+    window.onload = getWeather;
+</script>
+{% endblock %}

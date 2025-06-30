@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALDO_Database - {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ghibli-background">
+        <header>
+            <div class="logo-container">
+                <h1>ALDO_Database</h1>
+                <div class="totoro-icon"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                    <li><a href="{{ url_for('mahasiswa_ui') }}">Data Mahasiswa</a></li>
+                    <li><a href="{{ url_for('cuaca_ui') }}">Cek Cuaca</a></li>
+                    <li><a href="{{ url_for('kalkulator_ui') }}">Konversi Suhu</a></li>
+                    <li><a href="{{ url_for('nilai_tukar_ui') }}">Nilai Tukar</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>© 2025 ALDO_Database - Dibuat dengan ♥ oleh Mahasiswa</p>
+            <div class="soot-sprite"></div>
+        </footer>
+    </div>
+</body>
+</html>
