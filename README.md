@@ -21,5 +21,5 @@ Proyek ini adalah tugas UAS yang mengimplementasikan aplikasi **CRUD (Create, Re
 - HTML + CSS (untuk tampilan)
 - JSON (untuk API response)
 
-## 📁 Catatan Folder env
-Folder env/ tidak disertakan dalam repository karena terlalu besar dan tidak perlu diunggah. Gunakan perintah python -m venv env untuk membuat ulang environment.
+## 📁 Catatan Folder venv
+Folder venv/ tidak disertakan dalam repository karena terlalu besar dan tidak perlu diunggah. Gunakan perintah python -m venv env untuk membuat ulang environment.
